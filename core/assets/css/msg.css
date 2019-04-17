@@ -1,0 +1,7 @@
+/*
+* Documento de estilo das menságens da classe Msg
+* @author Weydans Campos de Barros, 06/03/2019.
+*/
+.msg{display: block; padding: 10px; margin-bottom: 15px; font-size: 1em; border-radius: 6px; color: #000;}
+.msg.accept{background: #22ff99; border: 1px solid #11dd66;}
+.msg.error{background: #ff8888; border: 1px solid #dd6666; color: #000;}

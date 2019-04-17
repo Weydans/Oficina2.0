@@ -1,0 +1,81 @@
+/*
+* Arquivo responsável pelas configurações específicas de estilo do gerador de classes do sistema,
+* Configura parte estrutural, interação e estilização de cores.
+*
+* @author Weydans Campos de Barros, 05/04/2019.
+*/
+
+*, *:before, *:after{
+	margin: 0;
+	padding: 0;
+
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+
+	font-family: 'Arial', sans-serif;
+}
+
+
+label,
+input{display: block; width: 100%; padding: 10px 10px;}
+button{
+	display: block;
+	padding: 6px 20px; 
+	background: #00cc99; 
+	border: 1px solid #00aa77;
+	font-size: 1.05em; 
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	color: #fff; 
+	border-radius: 5px; 
+	cursor: pointer;
+	box-shadow: inset 1px 1px 2px #fff;
+}
+button:hover{
+	background: #00ddaa; 
+	border: 1px solid #00bb88;
+}
+
+.container{width: 100%;}
+.content{float: left; width: 80%; margin: 0 10%;}
+.clear{clear: both;}
+
+.header{
+	display: block; 
+	width: 100%;
+	padding: 15px 0;  
+	text-align: center; 
+	border-bottom: 1px solid #ccc;	
+	background:  #00cc99; 
+}
+.header h1{
+	font-size: 2em; 
+	color: #fff;
+}
+.content-form{
+	text-align: left; 
+	margin-top: 50px;
+}
+.content-form label{
+	padding-left: 0; 
+	color: #555;
+}
+.content-form input{
+	font-size: .95em;
+	margin-bottom: 20px; 
+	border-radius: 5px; 
+	border: 1px solid #ccc; 
+	color: #555;
+}
+.footer{
+	width: 100%; 
+	text-align: center; 
+	letter-spacing: 1.1px;
+	color: #fff;
+	padding: 15px 0; 
+	border-top: 1px solid #ccc; 
+	position: absolute; 
+	bottom: 0;
+	background: #00cc99;
+}
