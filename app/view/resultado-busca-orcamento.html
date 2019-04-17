@@ -1,0 +1,19 @@
+
+<ul class="linha-res {bg-line} par">
+	<li class="w-id">{orcamento_id}</li>
+	<li class="w-cliente">{cliente_name}</li>
+	<li class="w-data">{orcamento_date}</li>
+	<li class="w-vendedor">{Vendedor_name}</li>
+	<li class="w-descricao">{orcamento_desc}</li>
+	<li class="w-val">{orcamento_val}</li>
+	<li class="w-edit">
+		<a href="http://oficina2.0.com/{id}/editar">
+			<img src="../../app/view/icon/edit.png" alt="Editar" title="Editar">
+		</a>
+	</li>
+	<li class="w-delete">
+		<a href="http://oficina2.0.com/buscar/{id}/excluir" onclick="return confirm('Deseja realmente excluir o orçamento de id {id} permanentemente?')">
+			<img src="../../app/view/icon/delete.png" alt="Excluir" title="Excluir">
+		</a>
+	</li>
+</ul>

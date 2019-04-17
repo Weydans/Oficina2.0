@@ -1,0 +1,35 @@
+
+<form name="form-busca-orcamento" action="" method="post">
+
+	<div class="container search">
+		<input type="search" name="busca_orcamento" autofocus required placeholder="Pesquisar por" value="{item_busca}">
+
+		<button class="btn btn-small btn-blue">Buscar</button>
+	</div>	
+
+	<div class="container field">				
+		<div>
+			<label for="">Data Inicial</label>
+			<input type="date" name="filtro_data_inicial" value="{filtro_data_inicial}">
+		</div>
+
+		<div>
+			<label for="">Data Final</label>
+			<input type="date" name="filtro_data_final" value="{filtro_data_final}">
+		</div>
+
+		<div>
+			<label for="">Cliente</label>
+			<input type="text" name="filtro_cliente" value="{filtro_cliente}">	
+		</div>
+
+		<div class="last">
+			<label for="">Vendedor</label>
+			<input type="text" name="fltro_vendedor" value="{fltro_vendedor}">	
+		</div>
+
+		<div class="clear"></div>					
+	</div>
+
+	<div class="clear"></div>
+</form>

@@ -1,0 +1,24 @@
+
+<form class="form-cad-orcamento" name="form-orcamento" action="" method="post">
+
+	<label for="orcamento_id">Id</label>
+	<input type="number" placeholder="Não preencher" name="orcamento_id" readonly value="{id}">
+
+	<label for="orcamento_cliente">Cliente</label>
+	<input type="text" autofocus placeholder="Nome completo do cliente" name="orcamento_cliente" required="required" value="{cliente}">
+
+	<label for="orcamento_data_hora">Data e Hora</label>
+	<input type="date" name="orcamento_data_hora" required="required" value="{dataHora}">
+
+	<label for="orcamento_vendedor">Vendedor</label>
+	<input type="text" placeholder="Nome completo do vendedor" name="orcamento_vendedor" required="required" value="{vendedor}">
+
+	<label for="orcamento_descricao">Descrição</label>
+	<textarea name="orcamento_descricao" placeholder="Breve descrição do orçamento" cols="30" rows="4" required="required">{descricao}</textarea>
+
+	<label for="orcamento_valor_orcado">Valor Orçado</label>
+	<input type="text" placeholder="Valor total do orçamento" name="orcamento_valor_orcado" required="required" value="{valorOrcado}">
+
+	<button class="btn btn-small btn-blue">Cadastrar</button>
+
+</form>
