@@ -108,9 +108,10 @@ a{text-decoration: none;}
  .search input{width: 80%; float left; display: inline-block; margin-right: 1%; padding: 7px 12px;}
  .search button{float: right; width: 19%;}
 
- .field{margin-top: 5px; background: #fff; border: 1px solid #e5e5e5; font-size: 0.85em; border-radius: 8px;}
- 
- .field div{width: 25%; float: left; padding: 10px 10px 0 10px;}
+ .filtro{margin-top: 5px; text-align: center; letter-spacing: 2px; background: #fff;  border: 1px solid #e5e5e5; font-size: 0.85em; border-radius: 8px;}
+ .filtro h1{padding: 2px; background: #eee; color: #09f; border-radius: 8px 8px 0 0; text-shadow: 0 0 2px #FFF;}
+
+ .field div{width: 25%; float: left; padding: 10px 10px 0 10px; text-align: left;}
  .field label{padding: 0px; margin: 0;}
  .field input{ padding: 4px; margin: 2px; }
  .field input[type="date"]{padding: 3px; margin: 2px 0; }
