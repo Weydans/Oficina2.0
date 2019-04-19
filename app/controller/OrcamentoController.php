@@ -10,6 +10,7 @@ class OrcamentoController extends Controller
 {
 	private static $linkHome = HOME;
 
+	private $dadosList = array();
 	private $dadosForm = array();
 	private $dadosTabela;
 	private $dadosBusca;
@@ -32,7 +33,7 @@ class OrcamentoController extends Controller
 
 		$this->clearForm();
 
-		$this->setConteudoPrincipal('./app/view/form-cad-orcamento.html');
+		$this->setConteudoPrincipal('./app/view/form-cad-orcamento.html', $this->dadosForm);
 		$this->setContent('./app/view/tela-principal.html', $this->conteudoPrincipal);
 		$this->setFooter('./app/view/footer.html');
 
@@ -81,7 +82,7 @@ class OrcamentoController extends Controller
 			}
 		}
 
-		$this->setConteudoPrincipal('./app/view/form-cad-orcamento.html');
+		$this->setConteudoPrincipal('./app/view/form-cad-orcamento.html', $this->dadosForm);
 		$this->setContent('./app/view/tela-principal.html', $this->conteudoPrincipal);
 		$this->setFooter('./app/view/footer.html');
 
@@ -135,7 +136,7 @@ class OrcamentoController extends Controller
 			if (is_array($this->dadosForm)) {
 				if ($cadastro === true){
 					$this->msg = Msg::setMsg("Orçamento do(a) cliente <b>{$this->dadosForm['orcamento_cliente']}</b> cadastrado com sucesso.", ACCEPT);
-				
+
 				} elseif ($atualizacao === true){
 					$this->msg = Msg::setMsg("Orçamento do(a) cliente <b>{$this->dadosForm['orcamento_cliente']}</b> atualizado com sucesso.", ACCEPT);
 				}
@@ -153,7 +154,7 @@ class OrcamentoController extends Controller
 			$this->clearForm();
 		}
 
-		$this->setConteudoPrincipal('./app/view/form-cad-orcamento.html');
+		$this->setConteudoPrincipal('./app/view/form-cad-orcamento.html', $this->dadosForm);
 		$this->setContent('./app/view/tela-principal.html', $this->conteudoPrincipal);
 		$this->setFooter('./app/view/footer.html');
 
@@ -161,13 +162,113 @@ class OrcamentoController extends Controller
 	}
 
 	/**
+	 * <b>listar</b>:
+	 * Lista todos os orçamentos cadastrados e exibe em forma de tabela
+	 * Realiza paginação dos registros existentes 	 *
+	 */
+	public function listar()
+	{
+		$this->setHeader('./app/view/header.html', array('home' => self::$linkHome));
+		$this->msg = '';
+
+		$page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
+		$delete = filter_input(INPUT_GET, 'delete', FILTER_DEFAULT);
+		$failDelete = filter_input(INPUT_GET, 'failDelete', FILTER_DEFAULT);
+
+		if (!empty($delete)){
+			$this->msg = Msg::setMsg("Orcamento do(a) cliente <b>{$delete}</b> removido com sucesso.", ACCEPT);
+		}
+
+		if (!empty($failDelete)){
+			$this->msg = Msg::setMsg($failDelete, ERROR);
+		}
+
+		$orcamento = new Orcamento;
+
+		if (!$page){
+			$page = 1;
+		}
+
+		$paginator = new Paginator($page, $orcamento, 5);
+		$itensLista = $paginator->exePaginator();
+		$paginador = $paginator->getPaginator('http://oficina2.0.com/lista', 5, 'Primeira', 'Última');
+
+		$item = '';
+		$i = 0;
+		if (is_array($itensLista) && !empty($itensLista)){
+			foreach ($itensLista as $key => $value) {
+				$i % 2 == 0 ? $bgLine = 'par' : $bgLine = 'impar';
+
+				$value['bg-line'] = $bgLine;
+				$value['home'] = self::$linkHome;
+				$value['orcamento_data_hora'] = date('d/m/Y H:i:s', strtotime($value['orcamento_data_hora']));
+				$value['orcamento_valor'] = 'R$ ' .  number_format( ($value['orcamento_valor']/100) , 2, ',', '.');
+
+				$item .= Render::show('./app/view/resultado-busca-orcamento.html', $value);
+
+				$i++;
+			}
+
+			$this->dadosList['resultadoBuscaOrcamento'] = $item;
+			$this->dadosList['paginador'] = $paginador;
+
+		} elseif (is_array($itensLista) && empty($itensLista)){
+			$this->msg = Msg::setMsg('Desculpe! Ainda não existem orçamentos cadastrados.', ERROR);
+			$this->dadosList['resultadoBuscaOrcamento'] = '';
+
+		} else {
+			$this->msg = Msg::setMsg($itensLista, ERROR);
+		}
+
+		$this->setConteudoPrincipal('./app/view/tabela-orcamentos.html', $this->dadosList);
+		$this->setContent('./app/view/tela-principal.html', $this->conteudoPrincipal);
+		$this->setFooter('./app/view/footer.html');
+
+		$this->show();
+	}
+
+	/**
+	 * <b>excluir</b>:
+	 * Realiza exclusões de orçamentos do sistema e 
+	 * redireciona para página de listagem de orçamentos.
+	 * @param string $id Recebe o id do registro a ser Excluído.
+	 */
+	public function excluir(string $id)
+	{
+		$id = filter_var($id, FILTER_DEFAULT);
+
+		if (is_numeric($id)){
+			$orcamento = new Orcamento;
+			$arrOrcamento = $orcamento->find($id);
+
+			if (is_array($arrOrcamento)){
+				$resDelete = $orcamento->delete($id);
+
+				if ($resDelete === true){
+					header('Location: ' . self::$linkHome . '/lista?delete=' . $arrOrcamento['orcamento_cliente']);
+
+				} else {
+					header('Location: ' . self::$linkHome . '/lista?failDelete=' . $resDelete);
+				}
+
+			} else {
+				header('Location: ' . self::$linkHome . '/lista?failDelete=Informe um orçamento cadastrado no sistema.' );
+			}
+
+		} else {
+			header('Location: ' . self::$linkHome . '/lista?failDelete=Informe um valor válido para exclusão.');
+		}
+	}
+
+	/**
 	 * <b>setConteudoPrincipal</b>:
 	 * Substitui os links de uma determinada view informada dinamicamnete.
 	 * @param string $caminhoArquivo Caminho do arquivo de view.
+	 * @param array $data Dados que vão substituir os links da view; 
 	 */
-	private function setConteudoPrincipal(string $caminhoArquivo)
+	private function setConteudoPrincipal(string $caminhoArquivo, array $data)
 	{
-		$conteudoPrincipal = $this->getPreparedView($caminhoArquivo, $this->dadosForm);
+		$conteudoPrincipal = $this->getPreparedView($caminhoArquivo, $data);
 		$this->conteudoPrincipal = array('conteudoPrincipal' => $conteudoPrincipal);
 
 		$this->conteudoPrincipal['<div class="msg"></div>'] = $this->msg;
