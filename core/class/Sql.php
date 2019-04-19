@@ -134,7 +134,7 @@ class Sql
      */
 	private function setParam($pdoStatement, $key, $value)
 	{
-		$pdoStatement->bindParam($key, $value);
+		$pdoStatement->bindParam($key, $value, (is_numeric($value) ? PDO::PARAM_INT : PDO::PARAM_STR));
 	}
 	
 	/**
