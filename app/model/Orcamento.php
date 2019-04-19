@@ -42,4 +42,9 @@ class Orcamento extends Model
 		return $this->nextIdModel(self::$table, self::$columns);
 	}
 
+	public function getTable()
+	{
+		return self::$table;
+	}
+
 }

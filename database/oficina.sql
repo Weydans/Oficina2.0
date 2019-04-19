@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS orcamento;
 CREATE TABLE IF NOT EXISTS orcamento (
   orcamento_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   orcamento_cliente VARCHAR(45) NOT NULL,
-  orcamento_data_hora TIMESTAMP NOT NULL,
+  orcamento_data_hora DATETIME NOT NULL,
   orcamento_vendedor VARCHAR(45) NOT NULL,
   orcamento_descricao VARCHAR(255) NOT NULL,
   orcamento_valor INT(8) NOT NULL,

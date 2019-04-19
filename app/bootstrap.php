@@ -39,4 +39,14 @@ $app->get('/{id}/atualizacao', function($id){
 	$atualizacao->editar($id);
 });
 
+$app->get('/lista', function(){
+	$lista = new OrcamentoController;
+	$lista->listar();
+});
+
+$app->get('/{id}/exclusao', function($id){
+	$lista = new OrcamentoController;
+	$lista->excluir($id);
+});
+
 $app->run();

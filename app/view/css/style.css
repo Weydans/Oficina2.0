@@ -122,27 +122,33 @@ a{text-decoration: none;}
 /**
  * CONFIGURAÇÃO TABELA DE RESULTADOS DA BUSCA DE ORÇAMENTOS
  */
- .tabela{margin-top: 15px; font-size: .8em;}
+ .tabela{margin: 5px 0 12px 0; font-size: .8em;}
  .tabela p{padding: 6px 8px; background: #086; color: #fff; font-weight: bold;}
- .tabela li{display: inline-block; padding: 6px 6px; font-size: .875em; vertical-align: middle;}
+ .tabela li{display: inline-block; padding: 7px 5px; font-size: .85em; vertical-align: middle; line-height: 1.4em;}
  .tabela .topo-tabela{background: #0a8;}
  .tabela .topo-tabela li{font-weight: bold; text-align: center; text-shadow: 0 0 2px #555; color: #fff; border-right: 1px solid #fff;}
- .tabela .linha-res{border-bottom: 1px solid #e5e5e5;}
- .tabela .linha-res:hover{background: #9df;}
+ .tabela .linha-res{border-bottom: 1px solid #e5e5e5; text-align: justify;}
+ .tabela .linha-res:hover{background: #cef;}
 
- .w-id{width: 4%;}
- .w-cliente{width: 21%;}
- .w-data{width: 8%}
- .w-vendedor{width: 21%;}
- .w-descricao{width: 28%;}
- .w-val{width: 6%;}
- .w-acao{width: 9%}
- .w-edit{width: 4.2%; text-align: right;}
- .w-delete{width: 4.2%; text-align: left;}
+ .w-id{width: 4%; text-align: center;}
+ .w-cliente{width: 20%;}
+ .w-data{width: 13%}
+ .w-vendedor{width: 20%;}
+ .w-descricao{width: 25%;}
+ .w-val{width: 9%;  text-align: center;}
+ .w-acao{width: 6%}
+ .w-edit{width: 2.9%; text-align: right;}
+ .w-delete{width: 2.9%; text-align: left;}
 
  .w-edit img{width: 18px;}
  .w-delete img{width: 18px;}
 
  .par{background: #fff;}
  .impar{background: #f3f3f3;}
+
+ .paginator{text-align: center; margin: 25px 0 0 0; font-size: 1.1em;}
+ .paginator li{padding: 1px 7px; margin: 0 2px;}
+ .paginator .active{ font-weight: bold; background: #0a7; color: #fff;}
+ .paginator a{color: #096}
+ .paginator span{font-weight: bold; color: #096;}
 

@@ -1,18 +1,18 @@
 
-<ul class="linha-res {bg-line} par">
+<ul class="linha-res {bg-line}">
 	<li class="w-id">{orcamento_id}</li>
 	<li class="w-cliente">{orcamento_cliente}</li>
-	<li class="w-data">{orcamento_data_hora}</li>
-	<li class="w-vendedor">{orcamento_vendedor}</li>
 	<li class="w-descricao">{orcamento_descricao}</li>
+	<li class="w-vendedor">{orcamento_vendedor}</li>
+	<li class="w-data">{orcamento_data_hora}</li>
 	<li class="w-val">{orcamento_valor}</li>
 	<li class="w-edit">
-		<a href="{home}/{orcamento_id}/editar">
+		<a href="{home}/{orcamento_id}/atualizacao">
 			<img src="{home}/app/view/icon/edit.png" alt="Editar" title="Editar">
 		</a>
 	</li>
 	<li class="w-delete">
-		<a href="{home}/buscar/{orcamento_id}/excluir" onclick="return confirm('Deseja realmente excluir o orçamento de id {orcamento_id} permanentemente?')">
+		<a href="{home}/{orcamento_id}/exclusao" onclick="return confirm('Deseja realmente excluir o orçamento do(a) cliente {orcamento_cliente} permanentemente?')">
 			<img src="{home}/app/view/icon/delete.png" alt="Excluir" title="Excluir">
 		</a>
 	</li>
