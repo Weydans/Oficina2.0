@@ -39,7 +39,7 @@ a{text-decoration: none;}
  * CONFIGURAÇÃO PADRÃO PARA FORMULÁRIOS
  */
  form{float: left; width: 100%; margin-top: 5px; color: #666}
- label{float: left; width: 100%; margin: 10px 0 4px 0; font-size: .8em;}
+ label{float: left; width: 100%; margin: 6px 0 4px 0; font-size: .8em;}
 
  input,
  textarea,
@@ -94,11 +94,14 @@ a{text-decoration: none;}
  * CONFIGURAÇÃO CONTEUDO PRINCIPAL
  */
  .conteudoPrincipal{background: #f9f9f9; padding: 20px 30px; margin-top: 15px; margin-bottom: 45px; border: 1px solid #e9e9e9; border-radius: 15px;}
+ .msg{font-size: .8em; padding: 6px 10px;}
 
 /**
  * CONFIGURAÇÃO FORMULÁRIO DE CADASTRO DE ORÇAMENTOS
  */
- .form-cad-orcamento button{margin: 12px 40%; width: 20%;}
+ .form-cad-orcamento button{margin: 15px 40% 0 40%; width: 20%;}
+ .form-cad-orcamento small{font-size: .83em; color: #f55; letter-spacing: 1px;}
+
 
 /**
  * CONFIGURAÇÃO FORMULÁRIO DE PESQUISA DE ORÇAMENTOS
@@ -114,7 +117,7 @@ a{text-decoration: none;}
  .field div{width: 25%; float: left; padding: 10px 10px 0 10px; text-align: left;}
  .field label{padding: 0px; margin: 0;}
  .field input{ padding: 4px; margin: 2px; }
- .field input[type="date"]{padding: 3px; margin: 2px 0; }
+ .field input[type="date"]{padding: 3px; margin: 2px 0;}
 
 /**
  * CONFIGURAÇÃO TABELA DE RESULTADOS DA BUSCA DE ORÇAMENTOS

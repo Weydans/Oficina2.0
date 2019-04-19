@@ -14,6 +14,29 @@ Autoload::run();
 
 $app = new Route();
 
-var_dump($app); die;
+$app->get('/', function(){
+	$home = new OrcamentoController;
+	$home->pageForm();
+});
+
+$app->post('/cadastro', function(){
+	$cadastro = new OrcamentoController;
+	$cadastro->cadastrar();
+});
+
+$app->get('/cadastro', function(){
+	$home = new OrcamentoController;
+	$home->pageForm();
+});
+
+$app->post('/atualizacao', function(){
+	$atualizacao = new OrcamentoController;
+	$atualizacao->editar();
+});
+
+$app->get('/{id}/atualizacao', function($id){
+	$atualizacao = new OrcamentoController;
+	$atualizacao->editar($id);
+});
 
 $app->run();

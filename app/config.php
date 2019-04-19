@@ -7,11 +7,11 @@
  */
 
 // CONFIGURAÇÃO GERAL DO SISTEMA
-define('HOME', 'http://oficina2.0.com/');
+define('HOME', 'http://oficina2.0.com');
 
 // CONFIGURAÇÃO DO BANCO DE DADOS
 define('DSN', 'mysql:host=localhost;dbname=oficina');
 define('USER', 'root');
 define('PASS', '');
-define('OPTION', [ PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8' ]);
+define('OPTIONS', [ PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8' ]);
 				   

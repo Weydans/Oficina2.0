@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS orcamento (
   orcamento_cliente VARCHAR(45) NOT NULL,
   orcamento_data_hora TIMESTAMP NOT NULL,
   orcamento_vendedor VARCHAR(45) NOT NULL,
-  orcamento_descricao TEXT NOT NULL,
-  orcamento_valor DECIMAL(5,2) NOT NULL,
+  orcamento_descricao VARCHAR(255) NOT NULL,
+  orcamento_valor INT(8) NOT NULL,
   PRIMARY KEY (orcamento_id),
   UNIQUE INDEX orcamento_id_UNIQUE (orcamento_id ASC)
   )
