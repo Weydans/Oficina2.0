@@ -183,15 +183,16 @@ class OrcamentoController extends Controller
 			$this->msg = Msg::setMsg($failDelete, ERROR);
 		}
 
-		$orcamento = new Orcamento;
-
-		if (!$page){
-			$page = 1;
+		if (!$page || $page < 0){
+			header('Location: http://oficina2.0.com/lista?page=1');
 		}
 
-		$paginator = new Paginator($page, $orcamento, 5);
+		$orcamento = new Orcamento;
+
+		// OBTEM RESULTADOS DINAMICAMENTE E REALIZA PAGINAÇÃO
+		$paginator = new Paginator('http://oficina2.0.com/lista?page=', $page, $orcamento, 8);
 		$itensLista = $paginator->exePaginator();
-		$paginador = $paginator->getPaginator('http://oficina2.0.com/lista', 5, 'Primeira', 'Última');
+		$paginador = $paginator->getPaginator('Primeira', 'Última', 5);
 
 		$item = '';
 		$i = 0;
@@ -204,7 +205,8 @@ class OrcamentoController extends Controller
 				$value['orcamento_data_hora'] = date('d/m/Y H:i:s', strtotime($value['orcamento_data_hora']));
 				$value['orcamento_valor'] = 'R$ ' .  number_format( ($value['orcamento_valor']/100) , 2, ',', '.');
 
-				$item .= Render::show('./app/view/resultado-busca-orcamento.html', $value);
+				// RENDERIZA RESULTADOS
+				$item .= Render::show('./app/view/resultado-busca-orcamento.html', $value); 	
 
 				$i++;
 			}
