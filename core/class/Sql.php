@@ -32,7 +32,7 @@ class Sql
 	{	
 		$this->init();
 	
-		$stmt = $this->conn->prepare($query);
+		$stmt = $this->conn->prepare($query); //var_dump($query, $params); die;
 		$this->setParams($stmt, $params);
 		$stmt->execute();
 		
@@ -47,8 +47,8 @@ class Sql
 	* @return array Retorna array contendo o registro buscado.
 	*/
 	public function select(string $query, array $params)
-	{
-		$stmt = $this->query($query, $params);
+	{	
+		$stmt = $this->query($query, $params); //var_dump($query, $params); die;
 		
 		$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

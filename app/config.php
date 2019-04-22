@@ -7,7 +7,7 @@
  */
 
 // CONFIGURAÇÃO GERAL DO SISTEMA
-define('HOME', 'http://oficina2.0.com');
+define('HOME', 'http://' . $_SERVER['HTTP_HOST']);
 
 // CONFIGURAÇÃO DO BANCO DE DADOS
 define('DSN', 'mysql:host=localhost;dbname=oficina');
