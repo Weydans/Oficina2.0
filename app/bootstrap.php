@@ -15,38 +15,40 @@ Autoload::run();
 $app = new Route();
 
 $app->get('/', function(){
-	$home = new OrcamentoController;
+	$home = new OrcamentoFormCadastro;
 	$home->pageForm();
 });
 
+
 $app->post('/cadastro', function(){
-	$cadastro = new OrcamentoController;
+	$cadastro = new OrcamentoFormCadastro;
 	$cadastro->cadastrar();
 });
 
 $app->get('/cadastro', function(){
-	$home = new OrcamentoController;
+	$home = new OrcamentoFormCadastro;
 	$home->pageForm();
 });
 
 $app->post('/atualizacao', function(){
-	$atualizacao = new OrcamentoController;
+	$atualizacao = new OrcamentoFormCadastro;
 	$atualizacao->editar();
 });
 
 $app->get('/{id}/atualizacao', function($id){
-	$atualizacao = new OrcamentoController;
+	$atualizacao = new OrcamentoFormCadastro;
 	$atualizacao->editar($id);
 });
 
-$app->get('/lista', function(){
-	$lista = new OrcamentoController;
-	$lista->listar();
-});
 
 $app->get('/{id}/exclusao', function($id){
 	$lista = new OrcamentoController;
 	$lista->excluir($id);
+});
+
+$app->get('/busca', function(){
+	$busca = new OrcamentoBusca;
+	$busca->buscar();
 });
 
 $app->run();
