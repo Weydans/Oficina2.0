@@ -1,8 +1,12 @@
 
-<form name="form-busca-orcamento" action="" method="post">
-
+<form name="form-busca-orcamento" action="{home}/busca" method="get">
+	
+	<a class="btn btn-small btn-white" href="{home}/busca?all=true">
+		<div>Ver todos orçamentos</div>
+	</a>
+	
 	<div class="container search">
-		<input type="search" name="orcamento_busca" autofocus required placeholder="Pesquisar por" value="{orcamento_busca}">
+		<input type="search" name="orcamento_busca" autofocus placeholder="Pesquisar por" value="{orcamento_busca}">
 
 		<button class="btn btn-small btn-blue">Buscar</button>
 	</div>	
@@ -12,25 +16,26 @@
 		<div class="filtro-title">
 			<h1>Filtro</h1>
 		</div>	
-				
+
 		<div class="container field">
 			<div>
-				<label for="">Data Inicial</label>
-				<input type="date" name="filtro_data_inicial" value="{orcamento_data_inicial}">
+				<label for="">Data Inicial <br><small>obrigatório DD/MM/AAAA HH:mm:ss</small></label>
+				<input type="text" placeholder="DD/MM/AAAA HH:mm:ss" name="filtro_data_inicial" value="{filtro_data_inicial}">
 			</div>
 
 			<div>
-				<label for="">Data Final</label>
-				<input type="date" name="filtro_data_final" value="{orcamento_final}">
+				<label for="">Data Final <br><small>obrigatório DD/MM/AAAA HH:mm:ss</small></label>
+				<input type="text" placeholder="DD/MM/AAAA HH:mm:ss" name="filtro_data_final" value="{filtro_data_final}">
 			</div>
 
 			<div>
-				<label for="">Cliente</label>
+				
+				<label for=""><br>Cliente</label>
 				<input type="text" name="orcamento_cliente" value="{orcamento_cliente}">	
 			</div>
 
 			<div class="last">
-				<label for="">Vendedor</label>
+				<label for=""><br>Vendedor</label>
 				<input type="text" name="orcamento_vendedor" value="{orcamento_vendedor}">	
 			</div>
 
