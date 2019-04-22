@@ -16,16 +16,20 @@ abstract class Change
 	 * @return string Retorna uma string preparada para conversão para timestamp.
 	 */
 	public static function brlToTimestamp($dataHoraBrl)
-	{
+	{		
 		$dataHora = explode(' ', $dataHoraBrl);
-		$arrData = explode('/', $dataHora[0]);
+		$dataHoraChanged = null;
 
-		$aux = $arrData[1];
-		$arrData[1] = $arrData[0];
-		$arrData[0] = $aux;
+		if (is_array($dataHora)){
+			$arrData = explode('/', $dataHora[0]);
 
-		$dataHora[0] = implode('/', $arrData);
-		$dataHoraChanged = implode(' ', $dataHora);
+			$aux = $arrData[1];
+			$arrData[1] = $arrData[0];
+			$arrData[0] = $aux;
+
+			$dataHora[0] = implode('/', $arrData);
+			$dataHoraChanged = implode(' ', $dataHora);
+		}
 
 		return $dataHoraChanged;
 	}
