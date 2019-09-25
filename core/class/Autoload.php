@@ -38,7 +38,7 @@ abstract class Autoload {
             foreach ($dirName as $dir) {
                 if (file_exists($dir . $file) && !is_dir($dir . $file)) {
                     require_once $dir . $file;
-                    $res = $dir . $file; //var_dump($dir . $file);
+                    $res = $dir . $file;
                 }
             }
 
